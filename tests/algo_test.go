@@ -2,6 +2,7 @@ package tests
 
 import (
 	"github.com/stretchr/testify/assert"
+	"reflect"
 	"start/algo"
 	"testing"
 )
@@ -118,6 +119,11 @@ func TestSum(t *testing.T) {
 			arr:  []int{10, 20, 30, 40, 50},
 			sum:  150,
 		},
+		{
+			name: "Empty arr",
+			arr:  []int{},
+			sum:  0,
+		},
 	}
 
 	for _, tc := range testCases {
@@ -127,5 +133,29 @@ func TestSum(t *testing.T) {
 				t.Errorf("expected sum of array %v to be %d but got %d", tc.arr, tc.sum, sum)
 			}
 		})
+	}
+}
+
+// testing reverse with different inputs
+func TestReverse(t *testing.T) {
+	testCases := []struct {
+		in  []int
+		out []int
+	}{
+		{[]int{1, 2, 3, 4, 5}, []int{5, 4, 3, 2, 1}},
+		{[]int{5, 4, 3, 2, 1}, []int{1, 2, 3, 4, 5}},
+		{[]int{1, 2, 3, 4, 5, 6}, []int{6, 5, 4, 3, 2, 1}},
+		{[]int{1, 2, 3, 4, 5, 6, 7}, []int{7, 6, 5, 4, 3, 2, 1}},
+		{[]int{2, 4, 1}, []int{1, 4, 2}},
+		{[]int{-2, -4, -1}, []int{-1, -4, -2}},
+		{[]int{}, []int{}},
+	}
+	//run each test case
+	for _, c := range testCases {
+		algo.Reverse(c.in)
+		//compare result to expected output
+		if !reflect.DeepEqual(c.in, c.out) {
+			t.Errorf("Reverse(%q) == %q, want %q", c.in, c.in, c.out)
+		}
 	}
 }

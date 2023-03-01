@@ -91,3 +91,15 @@ func Sum(arr []int) int {
 	// return the sum
 	return sum
 }
+
+// Reverse takes an array of integers and reverses its order
+func Reverse(list []int) {
+	//i is the starting index and j is the ending index of the list
+	for i, j := 0, len(list)-1; i < j; {
+		//swaps the values at the indexes i and j
+		list[i], list[j] = list[j], list[i]
+		//increment i and decrement j
+		i++
+		j--
+	}
+}

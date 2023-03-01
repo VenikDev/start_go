@@ -31,7 +31,7 @@ func TwoLargest(arr []int) (int, int) {
 	}
 
 	if len(arr) == 1 {
-		return arr[0], -1
+		return arr[0], arr[0]
 	}
 
 	largest, secondLargest = arr[0], arr[1]
@@ -76,4 +76,18 @@ func MinMax(arr []int) (int, int) {
 	}
 
 	return min, max
+}
+
+func Sum(arr []int) int {
+	// define a variable to store the sum
+	var sum int
+
+	// loop over each element of the array
+	for _, value := range arr {
+		// add value to the sum
+		sum += value
+	}
+
+	// return the sum
+	return sum
 }

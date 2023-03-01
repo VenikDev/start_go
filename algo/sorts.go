@@ -44,7 +44,7 @@ func Merge(left, right []int) []int {
 }
 
 // InsertionSort - функция, которая сортирует массив с использованием алгоритма сортировки вставками
-func InsertionSort(items []int) {
+func InsertionSort(items []int) []int {
 	// получаем длину массива
 	size := len(items)
 
@@ -52,11 +52,15 @@ func InsertionSort(items []int) {
 	for i := 1; i < size; i++ {
 		// устанавливаем индекс j равным i и идем по массиву с конца
 		j := i
-		for j > 0 && items[j-1] > items[j] {
+		key := items[j]
+		for j > 0 && items[j-1] > key {
 			// если условие выполняется, то обмениваем значения
-			items[j], items[j-1] = items[j-1], items[j]
+			items[j] = items[j-1]
 			// уменьшаем индекс j
 			j--
 		}
+		items[j] = key
 	}
+
+	return items
 }

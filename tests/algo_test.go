@@ -90,3 +90,42 @@ func TestMinMaxEmptySlice(t *testing.T) {
 		t.Errorf("Incorrect output of MinMax(), got %d and %d, want -1 and -1", min, max)
 	}
 }
+
+func TestSum(t *testing.T) {
+	// Test cases for Sum function
+	testCases := []struct {
+		name string
+		arr  []int
+		sum  int
+	}{
+		{
+			name: "Simple Addition",
+			arr:  []int{1, 2},
+			sum:  3,
+		},
+		{
+			name: "Adding Empty List",
+			arr:  []int{},
+			sum:  0,
+		},
+		{
+			name: "Adding Negatives",
+			arr:  []int{-1, -2, -3},
+			sum:  -6,
+		},
+		{
+			name: "Large List",
+			arr:  []int{10, 20, 30, 40, 50},
+			sum:  150,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			sum := algo.Sum(tc.arr)
+			if sum != tc.sum {
+				t.Errorf("expected sum of array %v to be %d but got %d", tc.arr, tc.sum, sum)
+			}
+		})
+	}
+}

@@ -42,3 +42,21 @@ func Merge(left, right []int) []int {
 
 	return ret
 }
+
+// InsertionSort takes an unsorted array and sorts it using the insertion sort algorithm
+func InsertionSort(items []int) {
+	// Get the length of the array
+	size := len(items)
+
+	// Iterate over the array, starting at index 1
+	for i := 1; i < size; i++ {
+		// Set the current index to j and iterate backwards while j is greater than 0
+		j := i
+		for j > 0 && items[j-1] > items[j] {
+			// Swap the values if the condition is true
+			items[j], items[j-1] = items[j-1], items[j]
+			// Decrement j
+			j--
+		}
+	}
+}

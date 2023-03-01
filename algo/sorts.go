@@ -43,19 +43,19 @@ func Merge(left, right []int) []int {
 	return ret
 }
 
-// InsertionSort takes an unsorted array and sorts it using the insertion sort algorithm
+// InsertionSort - функция, которая сортирует массив с использованием алгоритма сортировки вставками
 func InsertionSort(items []int) {
-	// Get the length of the array
+	// получаем длину массива
 	size := len(items)
 
-	// Iterate over the array, starting at index 1
+	// организуем цикл по индексу i
 	for i := 1; i < size; i++ {
-		// Set the current index to j and iterate backwards while j is greater than 0
+		// устанавливаем индекс j равным i и идем по массиву с конца
 		j := i
 		for j > 0 && items[j-1] > items[j] {
-			// Swap the values if the condition is true
+			// если условие выполняется, то обмениваем значения
 			items[j], items[j-1] = items[j-1], items[j]
-			// Decrement j
+			// уменьшаем индекс j
 			j--
 		}
 	}
